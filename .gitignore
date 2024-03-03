@@ -29,6 +29,5 @@ coverage
 
 *.tsbuildinfo
 
-# errmon-client
+# errmon-spa
 .env
-.devcontainer

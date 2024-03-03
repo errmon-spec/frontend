@@ -1,0 +1,90 @@
+{
+  "name": "errmon-client",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "runServices": ["devcontainer"],
+  "overrideCommand": false,
+  "workspaceFolder": "/app",
+  "initializeCommand": {
+    "assign-compose-project-name": "touch .env; grep -qwF COMPOSE_PROJECT_NAME .env || echo COMPOSE_PROJECT_NAME=errmon-client >> .env"
+  },
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "Vue.volar",
+        "browserstackcom.nightwatch",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "exiasr.hadolint",
+        "stylelint.vscode-stylelint"
+      ],
+      "settings": {
+        "[javascript][typescript][html][vue][css][postcss]": {
+          "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.fixAll.stylelint": "explicit"
+          },
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[json][jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[javascript][typescript][html][vue][css][postcss][json][jsonc]": {
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "files.insertFinalNewline": true,
+          "files.trimFinalNewlines": true,
+          "files.trimTrailingWhitespace": true
+        },
+        "css.validate": false,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+          "strings": "on"
+        },
+        "editor.semanticHighlighting.enabled": true,
+        "editor.tabSize": 2,
+        "eslint.format.enable": false,
+        "eslint.probe": ["javascript", "typescript", "html", "vue"],
+        "eslint.validate": ["javascript", "typescript", "html", "vue"],
+        "extensions.ignoreRecommendations": true,
+        "files.eol": "\n",
+        "files.exclude": {
+          ".git": true,
+          "node_modules": true,
+          "tmp": true,
+          "vendor/bundle": true
+        },
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true,
+        "git.branchProtection": ["main", "master", "prod"],
+        "gitlens.telemetry.enabled": false,
+        "javascript.validate.enable": false,
+        "json.format.enable": false,
+        "less.validate": false,
+        "prettier.enable": true,
+        "prettier.useEditorConfig": false,
+        "scss.validate": false,
+        "search.exclude": {
+          ".git": true,
+          "node_modules": true,
+          "tmp": true,
+          "vendor/bundle": true
+        },
+        "stylelint.enable": true,
+        "stylelint.reportDescriptionlessDisables": true,
+        "stylelint.reportInvalidScopeDisables": true,
+        "stylelint.reportNeedlessDisables": true,
+        "stylelint.snippet": ["css", "postcss"],
+        "stylelint.validate": ["css", "postcss"],
+        "telemetry.telemetryLevel": "off"
+      }
+    }
+  }
+}
