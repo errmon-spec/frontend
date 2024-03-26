@@ -20,7 +20,7 @@ devcontainer open .
 
 ```bash
 fly deploy \
---build-secret KEYCLOAK_CLIENT_ID="$KEYCLOAK_CLIENT_ID" \
---build-secret KEYCLOAK_REALM="$KEYCLOAK_REALM" \
---build-secret KEYCLOAK_URL="$KEYCLOAK_URL"
+--build-secret KEYCLOAK_CLIENT_ID="$VITE_KEYCLOAK_CLIENT_ID" \
+--build-secret KEYCLOAK_REALM="$VITE_KEYCLOAK_REALM" \
+--build-secret KEYCLOAK_URL="$VITE_KEYCLOAK_URL"
 ```

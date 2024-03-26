@@ -21,13 +21,14 @@ RUN npm ci --include=dev
 
 COPY --link . .
 
+# hadolint ignore=SC2155
 RUN --mount=type=secret,id=KEYCLOAK_CLIENT_ID \
     --mount=type=secret,id=KEYCLOAK_REALM \
     --mount=type=secret,id=KEYCLOAK_URL \
-    VITE_KEYCLOAK_CLIENT_ID="$(cat /run/secrets/KEYCLOAK_CLIENT_ID)" \
-    VITE_KEYCLOAK_REALM="$(cat /run/secrets/KEYCLOAK_REALM)" \
-    VITE_KEYCLOAK_URL="$(cat /run/secrets/KEYCLOAK_URL)" \
-    npm run build
+    export VITE_KEYCLOAK_CLIENT_ID="$(cat /run/secrets/KEYCLOAK_CLIENT_ID)" \
+    && export VITE_KEYCLOAK_REALM="$(cat /run/secrets/KEYCLOAK_REALM)" \
+    && export VITE_KEYCLOAK_URL="$(cat /run/secrets/KEYCLOAK_URL)" \
+    && npm run build
 
 ##
 ## Final image
