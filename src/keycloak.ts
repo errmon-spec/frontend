@@ -12,9 +12,9 @@ export class Keycloak {
   constructor() {
     this.store = useCurrentUserStore();
     this.keycloak = new KeycloakJS({
-      realm: 'errmon', // TODO - variável de ambiente
-      clientId: 'errmon-spa', // TODO - variável de ambiente
-      url: 'http://localhost:8080', // TODO - variável de ambiente
+      realm: import.meta.env.VITE_KEYCLOAK_REALM,
+      clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
+      url: import.meta.env.VITE_KEYCLOAK_URL,
     });
 
     this.keycloak.onReady = this.onReady.bind(this);
@@ -66,6 +66,7 @@ export class Keycloak {
 
   private setUser() {
     if (this.keycloak.idTokenParsed) {
+      console.log(this.keycloak.idTokenParsed);
       this.store.setUser({
         token: String(this.keycloak.token),
         id: String(this.keycloak.idTokenParsed.sub),
