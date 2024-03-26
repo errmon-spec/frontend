@@ -1,17 +1,18 @@
 {
-  "name": "errmon-client",
+  "name": "errmon-spa",
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
   "runServices": ["devcontainer"],
-  "overrideCommand": false,
   "workspaceFolder": "/app",
+  "overrideCommand": false,
   "initializeCommand": {
-    "assign-compose-project-name": "touch .env; grep -qwF COMPOSE_PROJECT_NAME .env || echo COMPOSE_PROJECT_NAME=errmon-client >> .env"
+    "assign-compose-project-name": "touch .env; grep -qwF COMPOSE_PROJECT_NAME .env || echo COMPOSE_PROJECT_NAME=errmon-spa >> .env"
   },
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "extensions": [
+        "DavidAnson.vscode-markdownlint",
         "GitHub.copilot",
         "Vue.volar",
         "browserstackcom.nightwatch",
@@ -19,7 +20,9 @@
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
         "exiasr.hadolint",
-        "stylelint.vscode-stylelint"
+        "stylelint.vscode-stylelint",
+        "tamasfe.even-better-toml",
+        "timonwong.shellcheck"
       ],
       "settings": {
         "[javascript][typescript][html][vue][css][postcss]": {
@@ -56,9 +59,7 @@
         "files.eol": "\n",
         "files.exclude": {
           ".git": true,
-          "node_modules": true,
-          "tmp": true,
-          "vendor/bundle": true
+          "node_modules": true
         },
         "files.insertFinalNewline": true,
         "files.trimFinalNewlines": true,
@@ -73,9 +74,8 @@
         "scss.validate": false,
         "search.exclude": {
           ".git": true,
-          "node_modules": true,
-          "tmp": true,
-          "vendor/bundle": true
+          "dist": true,
+          "node_modules": true
         },
         "stylelint.enable": true,
         "stylelint.reportDescriptionlessDisables": true,

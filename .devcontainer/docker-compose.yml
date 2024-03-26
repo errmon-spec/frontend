@@ -1,9 +1,9 @@
-name: errmon-client
+name: errmon-spa
 
 services:
   devcontainer:
-    container_name: errmon-client-devcontainer
-    image: errmon-client-devcontainer:0.1.0
+    container_name: errmon-spa-devcontainer
+    image: errmon-spa-devcontainer:0.1.0
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,10 +16,8 @@ services:
     volumes:
       - ${SSH_AUTH_SOCK:?err}:${SSH_AUTH_SOCK:?err}:ro
       - ../:/app
-      - ./dotfiles/.bashrc:/root/.bashrc:ro
       - npm-cache:/root/.npm
       - history:/root/history.d
-      - node-modules:/app/node_modules
     deploy:
       resources:
         limits:
@@ -28,8 +26,6 @@ services:
   runner:
     extends: devcontainer
     command: ["/bin/bash"]
-    stdin_open: true
-    tty: true
 
 volumes:
   history:
