@@ -66,7 +66,6 @@ export class Keycloak {
 
   private setUser() {
     if (this.keycloak.idTokenParsed) {
-      console.log(this.keycloak.idTokenParsed);
       this.store.setUser({
         token: String(this.keycloak.token),
         id: String(this.keycloak.idTokenParsed.sub),
